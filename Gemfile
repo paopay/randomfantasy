@@ -21,6 +21,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'simple_form'
 # Use devise for handling authentication
 gem 'devise'
+# Icons galore
+gem "font-awesome-rails"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
