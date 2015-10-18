@@ -7,6 +7,8 @@ class LeaguesController < ApplicationController
 
 	def create
 		@league = League.new(league_params)
+
+		redirect_to root_path
 	end
 
 	private

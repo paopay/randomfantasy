@@ -1,8 +1,31 @@
 <div class="row" style="margin-top:20px;">
 	<div class="col-md-6 col-md-offset-3">
 		<%= simple_form_for @league do |f| %>
-			<%= f.input :name %>
-			<%= f.button :submit, class: "btn btn-block btn-success" %>
+			<%= f.input :name, label: "Name of League", required: true %>
+			<label class="string required control-label">Participants</label>
+			<div class="emailForm">
+				<%= render partial: 'email_form' %>
+			</div>
+			<a href="javascript:;" id="addNewEmail"><%= fa_icon "plus" %> Add Another Email</a>
+			&nbsp;
+			<a href="javascript:;" id="removeEmail"><%= fa_icon "minus" %> Remove Last Email</a>
+			<%= f.button :submit, class: "btn btn-block btn-success", style: "margin-top:10px;" %>
 		<% end %>
 	</div>
 </div>
+
+<div class="hidden" id="new_email_form">
+  <%= render partial: "email_form" %>
+</div>
+
+<script>
+$(document).ready(function(){
+  $("#addNewEmail").click(function(){
+    $(".emailForm").append($("#new_email_form").html());
+  });
+
+  $("#removeEmail").click(function(){
+    $(".emailForm").children().last().remove();
+  });
+});
+</script>
