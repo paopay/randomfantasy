@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :user_leagues
+  has_many :user_leagues, dependent: :destroy
   has_many :leagues, through: :user_leagues
 
 end
