@@ -6,6 +6,9 @@ class UserNotifier < ApplicationMailer
 		@league_owner = league_owner
 		@league 			= league
 		@draft_order 	= draft_order
+
+		headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"Unsubscribe <%Here%>","text/plain":"Unsubscribe Here: <% %>"}}}}'
+
 		mail( to: @to_user.email,
 		 subject: "#{@league.name} Draft Order by #{@league_owner.email}"
 		)
