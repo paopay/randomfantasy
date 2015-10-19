@@ -36,5 +36,8 @@ group :development, :test do
 
   # Pretty console logging
   gem 'awesome_print'
+
+  # Load env from file
+  gem 'dotenv-rails'
 end
 
