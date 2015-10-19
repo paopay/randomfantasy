@@ -9,7 +9,7 @@
 			<h3>My Leagues:</h3>
 				<ul>
 					<% current_user.leagues.each do |league| %>
-						<li><%= link_to league.name, league_path(league) %></li>
+						<li><%= league.name %></li>
 					<% end %>
 				</ul>
 		<% else %>

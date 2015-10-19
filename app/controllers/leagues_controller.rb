@@ -28,6 +28,20 @@ class LeaguesController < ApplicationController
 
 	private
 
+	def randomize_email_order(emails)
+		email_order = {}
+		emails.shuffle!
+
+		emails.each_with_index do |email, index|
+			email_order[index+1] = email
+		end
+
+		p '-=-=' * 20
+		p email_order
+		p '-=-=' * 20
+		email_order
+	end
+
 	def send_email(email)
 		p "-=-=" * 20
 		p "sending email to #{email}"
