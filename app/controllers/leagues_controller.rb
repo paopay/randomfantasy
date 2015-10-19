@@ -9,6 +9,7 @@ class LeaguesController < ApplicationController
 		@league = League.new(league_params)
 
 		if @league.save!
+			email_order = randomize_email_order(params[:email])
 			params[:email].each do |email|
 				user = User.find_by(email: email)
 				if user
@@ -17,12 +18,12 @@ class LeaguesController < ApplicationController
 					temp = TempUser.find_or_create_by(email: email)
 					temp.leagues << @league
 				end
-
+				user = user || temp
+				UserNotifier.draft_order_email(current_user, @league, user, email_order)
 			end
 		else
 			render 'new'
 		end
-
 		redirect_to root_path
 	end
 
@@ -36,15 +37,7 @@ class LeaguesController < ApplicationController
 			email_order[index+1] = email
 		end
 
-		p '-=-=' * 20
-		p email_order
-		p '-=-=' * 20
 		email_order
-	end
-
-	def send_email(email)
-		p "-=-=" * 20
-		p "sending email to #{email}"
 	end
 
 	def league_params

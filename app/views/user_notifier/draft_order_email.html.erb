@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h3>Draft Order for <%= @league.name %>:</h3>
+    <% draft_order.each do |order, email| %>
+	    <p><%= order %>. <%= email %></p>
+    <% end %>
+    <br />
+    <br />
+    <p>Randomized by <%= @league_owner.email %></p>
+  </body>
+  <hr />
+  <a href="[unsubscribe]">Unsubscribe from these emails</a>
+</html>
