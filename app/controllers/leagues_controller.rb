@@ -19,7 +19,7 @@ class LeaguesController < ApplicationController
 					temp.leagues << @league
 				end
 				user = user || temp
-				UserNotifier.draft_order_email(current_user, @league, user, email_order)
+				UserNotifier.draft_order_email(current_user, @league, user, email_order).deliver
 			end
 		else
 			render 'new'

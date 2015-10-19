@@ -5,7 +5,7 @@
   </head>
   <body>
     <h3>Draft Order for <%= @league.name %>:</h3>
-    <% draft_order.each do |order, email| %>
+    <% @draft_order.each do |order, email| %>
 	    <p><%= order %>. <%= email %></p>
     <% end %>
     <br />
